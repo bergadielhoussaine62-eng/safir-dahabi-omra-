@@ -1,67 +1,1726 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crispy Food - طلبات</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>السفر الذهبي | Voyage Or - عمرة 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --gold-pale: #FDF6E3;
+    --deep: #1A1208;
+    --deep2: #2D1F08;
+    --cream: #FAF7F0;
+    --white: #FFFFFF;
+    --text-main: #1A1208;
+    --text-muted: #6B5A3E;
+    --text-light: #9E8B6A;
+    --border: rgba(201,168,76,0.2);
+    --shadow: 0 4px 24px rgba(139,105,20,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(26,18,8,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 42px; height: 42px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-icon::after {
+    content: '✦';
+    color: var(--deep);
+    font-size: 18px;
+  }
+
+  .nav-logo-text { line-height: 1.2; }
+  .nav-logo-ar { font-size: 17px; font-weight: 700; color: var(--gold); }
+  .nav-logo-fr { font-size: 11px; color: rgba(201,168,76,0.6); letter-spacing: 2px; text-transform: uppercase; }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--deep) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--deep) !important; }
+
+  .lang-switcher {
+    display: flex; gap: 6px; margin-right: 8px;
+  }
+
+  .lang-btn {
+    background: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: rgba(201,168,76,0.7);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--gold);
+    color: var(--deep);
+    border-color: var(--gold);
+  }
+
+  .hamburger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px;
+  }
+
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0E0B05 0%, #1A1208 40%, #2D1F08 100%);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 100px 5% 60px;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 40%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    width: 600px; height: 600px;
+    border: 1px solid rgba(201,168,76,0.06);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-ornament::before {
+    content: '';
+    position: absolute; inset: 40px;
+    border: 1px solid rgba(201,168,76,0.04);
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 .gold { color: var(--gold); }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 36px;
+    font-weight: 300;
+    max-width: 500px;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-stats {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+
+  .hero-stat-num {
+    font-size: 28px; font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  .hero-images {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    pointer-events: none;
+  }
+
+  .hero-img-main {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px; height: 500px;
+    object-fit: cover;
+    opacity: 0.22;
+    filter: sepia(30%) brightness(0.8);
+  }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 80px 5%; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.25;
+  }
+
+  .section-rule {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin: 16px auto 0;
+  }
+
+  /* ===== PACKAGES ===== */
+  #packages { background: var(--cream); }
+
+  .packages-tabs {
+    display: flex; justify-content: center; gap: 8px;
+    margin-bottom: 40px; flex-wrap: wrap;
+  }
+
+  .pkg-tab {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .pkg-tab.active, .pkg-tab:hover {
+    background: var(--gold);
+    color: var(--deep);
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .pkg-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pkg-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .pkg-card.featured {
+    border-color: var(--gold);
+    border-width: 2px;
+    position: relative;
+  }
+
+  .pkg-badge {
+    position: absolute; top: -1px; right: 24px;
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 0 0 6px 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .pkg-header {
+    background: var(--deep);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .pkg-header.gold-bg { background: linear-gradient(135deg, #8B6914, #C9A84C); }
+
+  .pkg-name { font-size: 20px; font-weight: 700; color: var(--white); }
+  .pkg-subtitle { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+  .pkg-price {
+    text-align: center; padding: 20px 24px 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+
+  .pkg-price-amount {
+    font-size: 32px; font-weight: 800;
+    color: var(--gold-dark);
+  }
+
+  .pkg-price-unit { font-size: 13px; color: var(--text-light); display: block; }
+
+  .pkg-features {
+    padding: 20px 24px;
+    list-style: none;
+  }
+
+  .pkg-features li {
+    font-size: 14px; color: var(--text-muted);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .pkg-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700; flex-shrink: 0;
+  }
+
+  .pkg-cta {
+    padding: 16px 24px;
+  }
+
+  .pkg-cta a {
+    display: block; text-align: center;
+    background: var(--gold);
+    color: var(--deep);
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .pkg-cta a:hover { background: var(--gold-light); }
+
+  /* ===== OCCASIONS ===== */
+  #occasions { background: var(--deep); }
+
+  #occasions .section-title { color: var(--white); }
+  #occasions .section-eyebrow { color: var(--gold); }
+
+  .occasions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .occ-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 28px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: block;
+  }
+
+  .occ-card:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-2px);
+  }
+
+  .occ-icon {
+    font-size: 32px; margin-bottom: 12px;
+    display: block;
+  }
+
+  .occ-name { font-size: 16px; font-weight: 700; color: var(--white); }
+  .occ-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  .occ-price {
+    display: inline-block; margin-top: 12px;
+    font-size: 12px; font-weight: 700;
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* ===== INCLUDED / NOT INCLUDED ===== */
+  #included { background: var(--white); }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px; max-width: 900px; margin: 0 auto;
+  }
+
+  .included-box {
+    border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+
+  .included-box-header {
+    padding: 16px 24px;
+    font-weight: 700; font-size: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .included-box-header.yes {
+    background: #F0FBF4; color: #1A6B35;
+    border-bottom: 1px solid #C3E8CE;
+  }
+
+  .included-box-header.no {
+    background: #FEF4F4; color: #8B2020;
+    border-bottom: 1px solid #F5C5C5;
+  }
+
+  .included-list {
+    list-style: none; padding: 16px 24px;
+  }
+
+  .included-list li {
+    padding: 8px 0;
+    font-size: 14px; color: var(--text-muted);
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .included-list li:last-child { border-bottom: none; }
+  .included-list li span.icon { font-size: 16px; }
+
+  /* ===== PROGRAM ===== */
+  #program { background: var(--cream); }
+
+  .program-timeline {
+    max-width: 800px; margin: 0 auto;
+    position: relative;
+  }
+
+  .program-timeline::before {
+    content: '';
+    position: absolute; top: 0; bottom: 0;
+    right: 28px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .prog-item {
+    display: flex; gap: 20px;
+    margin-bottom: 32px;
+    padding-right: 64px;
+    position: relative;
+  }
+
+  .prog-dot {
+    position: absolute;
+    right: 19px; top: 6px;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    flex-shrink: 0;
+  }
+
+  .prog-day {
+    font-size: 12px; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  .prog-title {
+    font-size: 17px; font-weight: 700;
+    color: var(--text-main); margin-bottom: 8px;
+  }
+
+  .prog-desc { font-size: 14px; color: var(--text-muted); }
+
+  /* ===== FAQ ===== */
+  #faq { background: var(--white); }
+
+  .faq-list {
+    max-width: 800px; margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-q {
+    width: 100%; background: none; border: none;
+    padding: 20px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px; font-weight: 500;
+    color: var(--text-main);
+    cursor: pointer; text-align: right;
+    gap: 12px;
+  }
+
+  .faq-arrow {
+    font-size: 18px; color: var(--gold);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    font-size: 14px; color: var(--text-muted);
+    line-height: 1.75;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 400px;
+    padding-bottom: 20px;
+  }
+
+  /* ===== GALLERY ===== */
+  #gallery { background: var(--deep2); }
+  #gallery .section-title { color: var(--white); }
+  #gallery .section-eyebrow { color: var(--gold); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 8px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .gallery-grid .g-item { overflow: hidden; border-radius: 4px; }
+  .gallery-grid .g-item.tall { grid-row: span 2; }
+  .gallery-grid .g-item.wide { grid-column: span 2; }
+
+  .gallery-grid img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.5s;
+    filter: brightness(0.88);
+  }
+
+  .gallery-grid .g-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(1);
+  }
+
+  .g-item { min-height: 180px; }
+
+  /* ===== BRANCHES ===== */
+  #branches { background: var(--cream); }
+
+  .branches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .branch-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    transition: box-shadow 0.2s;
+  }
+
+  .branch-card:hover { box-shadow: var(--shadow); }
+
+  .branch-city {
+    font-size: 18px; font-weight: 700;
+    color: var(--text-main); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .branch-city::before {
+    content: '📍';
+    font-size: 16px;
+  }
+
+  .branch-info { font-size: 13px; color: var(--text-muted); line-height: 1.9; }
+
+  .branch-hours {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .branch-hours-title {
+    font-size: 12px; font-weight: 700;
+    color: var(--gold); letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+
+  .hours-row {
+    display: flex; justify-content: space-between;
+    font-size: 13px; color: var(--text-muted);
+    padding: 4px 0;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials { background: var(--deep); }
+  #testimonials .section-title { color: var(--white); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; max-width: 1100px; margin: 0 auto;
+  }
+
+  .testi-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 8px; padding: 24px;
+  }
+
+  .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+
+  .testi-text {
+    font-size: 14px; color: rgba(255,255,255,0.65);
+    line-height: 1.75; margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    font-size: 13px; font-weight: 700;
+    color: var(--white);
+  }
+
+  .testi-time { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--white); }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px; max-width: 1000px; margin: 0 auto;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-size: 22px; font-weight: 700;
+    margin-bottom: 24px; color: var(--text-main);
+  }
+
+  .contact-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .contact-item-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .contact-item-text { font-size: 14px; color: var(--text-muted); }
+  .contact-item-label { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    direction: rtl;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .contact-form textarea { min-height: 100px; resize: vertical; }
+
+  .contact-form .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+
+  .wa-btn {
+    display: flex; align-items: center; gap: 10px; justify-content: center;
+    background: #25D366; color: white;
+    padding: 13px 24px; border-radius: 4px;
+    font-size: 15px; font-weight: 700;
+    text-decoration: none; margin-top: 8px;
+    transition: background 0.2s;
+  }
+
+  .wa-btn:hover { background: #1DB954; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 48px 5% 28px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
+  }
+
+  .footer-brand p {
+    font-size: 13px; color: rgba(255,255,255,0.4);
+    line-height: 1.7; margin-top: 16px;
+  }
+
+  .footer-col h4 {
+    font-size: 13px; font-weight: 700;
+    color: var(--gold); letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 13px; color: rgba(255,255,255,0.45);
+    text-decoration: none; margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  .social-links { display: flex; gap: 12px; }
+
+  .social-link {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none; font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .wa-float {
+    position: fixed; bottom: 28px; left: 28px; z-index: 999;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 26px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s;
+  }
+
+  .wa-float:hover { transform: scale(1.1); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; top: 70px; left: 0; right: 0;
+      background: rgba(26,18,8,0.98);
+      padding: 20px 5% 30px;
+      gap: 16px; border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .hero { padding-top: 120px; }
+    .included-grid { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid .g-item.wide { grid-column: span 1; }
+    .contact-form .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 60px 4%; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .program-timeline::before { right: 16px; }
+    .prog-item { padding-right: 44px; }
+    .prog-dot { right: 7px; }
+  }
+
+  /* lang hidden */
+  [data-lang] { display: none; }
+  [data-lang="ar"] { display: block; }
+  body.fr [data-lang="ar"] { display: none; }
+  body.fr [data-lang="fr"] { display: block; }
+  span[data-lang="ar"], a[data-lang="ar"], li[data-lang="ar"] { display: inline; }
+  body.fr span[data-lang="ar"], body.fr a[data-lang="ar"], body.fr li[data-lang="ar"] { display: none; }
+  body.fr span[data-lang="fr"], body.fr a[data-lang="fr"], body.fr li[data-lang="fr"] { display: inline; }
+  span[data-lang="fr"], a[data-lang="fr"], li[data-lang="fr"] { display: none; }
+</style>
 </head>
-<body class="bg-gray-100 p-4">
+<body>
 
-    <div class="max-w-3xl mx-auto">
-        <h1 class="text-2xl font-bold mb-6 text-center">Crispy Food Menu</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-4">
-                <div class="bg-white p-4 rounded-lg shadow flex gap-4">
-                    <img src="https://via.placeholder.com/100x100?text=Tacos" class="w-20 h-20 rounded object-cover" alt="Tacos">
-                    <div>
-                        <h3 class="font-bold">Tacos Crispy</h3>
-                        <p class="text-blue-600 font-bold">42 درهم</p>
-                        <button onclick="addToCart('Tacos Crispy', 42)" class="bg-blue-600 text-white px-3 py-1 rounded mt-2 text-sm">إضافة</button>
-                    </div>
-                </div>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"></div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-ar">السفر الذهبي</div>
+      <div class="nav-logo-fr">VOYAGE OR</div>
+    </div>
+  </a>
 
-                <div class="bg-white p-4 rounded-lg shadow flex gap-4">
-                    <img src="https://via.placeholder.com/100x100?text=Box" class="w-20 h-20 rounded object-cover" alt="Box">
-                    <div>
-                        <h3 class="font-bold">Crispy Box</h3>
-                        <p class="text-blue-600 font-bold">47 درهم</p>
-                        <button onclick="addToCart('Crispy Box', 47)" class="bg-blue-600 text-white px-3 py-1 rounded mt-2 text-sm">إضافة</button>
-                    </div>
-                </div>
-            </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#packages" data-lang="ar">باقات العمرة</a><a href="#packages" data-lang="fr">Offres Omra</a></li>
+    <li><a href="#occasions" data-lang="ar">المناسبات</a><a href="#occasions" data-lang="fr">Occasions</a></li>
+    <li><a href="#program" data-lang="ar">البرنامج</a><a href="#program" data-lang="fr">Programme</a></li>
+    <li><a href="#faq" data-lang="ar">أسئلة شائعة</a><a href="#faq" data-lang="fr">FAQ</a></li>
+    <li><a href="#branches" data-lang="ar">فروعنا</a><a href="#branches" data-lang="fr">Agences</a></li>
+    <li><a href="#contact" class="nav-cta" data-lang="ar">احجز الآن</a><a href="#contact" class="nav-cta" data-lang="fr">Réserver</a></li>
+  </ul>
 
-            <div class="bg-white p-4 rounded-lg shadow h-fit">
-                <h2 class="font-bold text-lg mb-4">سلة الطلبات</h2>
-                <div id="cart-list" class="space-y-2 mb-4"></div>
-                <hr>
-                <p class="text-xl font-bold mt-4">المجموع: <span id="total">0</span> درهم</p>
-                <button onclick="checkout()" class="w-full bg-green-600 text-white py-3 rounded-lg mt-4 font-bold">إرسال الطلب عبر واتساب</button>
-            </div>
-        </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ar')">AR</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-ornament"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      ✦ <span data-lang="ar">عمرة المغرب 2026</span><span data-lang="fr">Omra Maroc 2026</span>
     </div>
 
-    <script>
-        let cart = [];
-        let total = 0;
+    <h1>
+      <span data-lang="ar">رحلتك الروحية<br><span class="gold">تبدأ معنا</span></span>
+      <span data-lang="fr">Votre voyage<br><span class="gold">spirituel commence</span></span>
+    </h1>
 
-        function addToCart(name, price) {
-            cart.push({name, price});
-            total += price;
-            renderCart();
-        }
+    <p class="hero-subtitle" data-lang="ar">وكالة السفر الذهبي — شريكك الأمثل لأداء العمرة في أفضل الظروف، بتنظيم سلس وأسعار تنافسية من المغرب</p>
+    <p class="hero-subtitle" data-lang="fr">VoyageOr — votre partenaire idéal pour accomplir votre Omra dans les meilleures conditions, avec une organisation parfaite depuis le Maroc</p>
 
-        function renderCart() {
-            const list = document.getElementById('cart-list');
-            list.innerHTML = cart.map(item => `<p>${item.name} - ${item.price} DH</p>`).join('');
-            document.getElementById('total').innerText = total;
-        }
+    <div class="hero-actions">
+      <a href="#packages" class="btn-primary">
+        <span data-lang="ar">اكتشف باقاتنا</span>
+        <span data-lang="fr">Nos offres</span>
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span data-lang="ar">تواصل معنا</span>
+        <span data-lang="fr">Nous contacter</span>
+      </a>
+    </div>
 
-        function checkout() {
-            let msg = "الطلب: " + cart.map(i => i.name).join(", ") + ". المجموع: " + total + " DH";
-            window.open("https://wa.me/212634555612?text=" + encodeURIComponent(msg));
-        }
-    </script>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">489+</div>
+        <div class="hero-stat-label" data-lang="ar">تقييم على Google</div>
+        <div class="hero-stat-label" data-lang="fr">Avis Google</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.8★</div>
+        <div class="hero-stat-label" data-lang="ar">تقييم متميز</div>
+        <div class="hero-stat-label" data-lang="fr">Note excellente</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label" data-lang="ar">فروع بالمغرب</div>
+        <div class="hero-stat-label" data-lang="fr">Agences au Maroc</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">باقاتنا</span>
+    <span class="section-eyebrow" data-lang="fr">Nos forfaits</span>
+    <h2 class="section-title" data-lang="ar">عمرة المغرب 2026 — اختر شهرك</h2>
+    <h2 class="section-title" data-lang="fr">Omra Maroc 2026 — Choisissez votre mois</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="packages-tabs">
+    <button class="pkg-tab active" onclick="filterPkg('monthly')">
+      <span data-lang="ar">شهري</span><span data-lang="fr">Mensuel</span>
+    </button>
+    <button class="pkg-tab" onclick="filterPkg('occasion')">
+      <span data-lang="ar">مناسبات</span><span data-lang="fr">Occasions</span>
+    </button>
+  </div>
+
+  <div class="packages-grid" id="pkgGrid">
+    <!-- MEDIUM -->
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-name" data-lang="ar">واسطة</div>
+        <div class="pkg-name" data-lang="fr">Medium</div>
+        <div class="pkg-subtitle" data-lang="ar">15 يوم — 14 ليلة</div>
+        <div class="pkg-subtitle" data-lang="fr">15 jours — 14 nuits</div>
+      </div>
+      <div class="pkg-price">
+        <div class="pkg-price-amount">15,700</div>
+        <span class="pkg-price-unit" data-lang="ar">درهم مغربي للشخص</span>
+        <span class="pkg-price-unit" data-lang="fr">MAD par personne</span>
+      </div>
+      <ul class="pkg-features">
+        <li data-lang="ar">تذكرة طيران ذهابًا وإيابًا</li><li data-lang="fr">Billet aller-retour</li>
+        <li data-lang="ar">إقامة بمكة والمدينة المنورة</li><li data-lang="fr">Hébergement La Mecque & Médine</li>
+        <li data-lang="ar">النقل داخل السعودية</li><li data-lang="fr">Transport en Arabie Saoudite</li>
+        <li data-lang="ar">تأشيرة العمرة + تأمين</li><li data-lang="fr">Visa + Assurance</li>
+        <li data-lang="ar">زيارات دينية مع مرشد</li><li data-lang="fr">Visites religieuses guidées</li>
+        <li data-lang="ar">دروس دينية طوال الرحلة</li><li data-lang="fr">Cours religieux inclus</li>
+      </ul>
+      <div class="pkg-cta">
+        <a href="#contact" data-lang="ar">احجز الآن</a>
+        <a href="#contact" data-lang="fr">Réserver</a>
+      </div>
+    </div>
+
+    <!-- GOLD -->
+    <div class="pkg-card featured">
+      <div class="pkg-badge" data-lang="ar">الأكثر طلبًا</div>
+      <div class="pkg-badge" data-lang="fr">Plus populaire</div>
+      <div class="pkg-header gold-bg">
+        <div class="pkg-name" data-lang="ar">ذهب</div>
+        <div class="pkg-name" data-lang="fr">Gold</div>
+        <div class="pkg-subtitle" data-lang="ar">15 يوم — 14 ليلة</div>
+        <div class="pkg-subtitle" data-lang="fr">15 jours — 14 nuits</div>
+      </div>
+      <div class="pkg-price">
+        <div class="pkg-price-amount">15,700</div>
+        <span class="pkg-price-unit" data-lang="ar">درهم مغربي للشخص</span>
+        <span class="pkg-price-unit" data-lang="fr">MAD par personne</span>
+      </div>
+      <ul class="pkg-features">
+        <li data-lang="ar">تذكرة طيران ذهابًا وإيابًا</li><li data-lang="fr">Billet aller-retour</li>
+        <li data-lang="ar">إقامة بمكة والمدينة المنورة</li><li data-lang="fr">Hébergement La Mecque & Médine</li>
+        <li data-lang="ar">النقل داخل السعودية</li><li data-lang="fr">Transport en Arabie Saoudite</li>
+        <li data-lang="ar">تأشيرة العمرة + تأمين</li><li data-lang="fr">Visa + Assurance</li>
+        <li data-lang="ar">زيارات دينية مع مرشد</li><li data-lang="fr">Visites religieuses guidées</li>
+        <li data-lang="ar">دروس دينية + فندق مميز</li><li data-lang="fr">Cours + Hôtel premium</li>
+      </ul>
+      <div class="pkg-cta">
+        <a href="#contact" data-lang="ar">احجز الآن</a>
+        <a href="#contact" data-lang="fr">Réserver</a>
+      </div>
+    </div>
+
+    <!-- EXCELLENT -->
+    <div class="pkg-card">
+      <div class="pkg-header" style="background: linear-gradient(135deg, #2D1F08, #4A3010);">
+        <div class="pkg-name" data-lang="ar">ممتاز</div>
+        <div class="pkg-name" data-lang="fr">Excellent</div>
+        <div class="pkg-subtitle" data-lang="ar">15 يوم — 14 ليلة</div>
+        <div class="pkg-subtitle" data-lang="fr">15 jours — 14 nuits</div>
+      </div>
+      <div class="pkg-price">
+        <div class="pkg-price-amount">35,000</div>
+        <span class="pkg-price-unit" data-lang="ar">درهم مغربي للشخص</span>
+        <span class="pkg-price-unit" data-lang="fr">MAD par personne</span>
+      </div>
+      <ul class="pkg-features">
+        <li data-lang="ar">تذكرة طيران ذهابًا وإيابًا</li><li data-lang="fr">Billet aller-retour</li>
+        <li data-lang="ar">فنادق 5 نجوم قرب الحرم</li><li data-lang="fr">Hôtels 5★ proches du Haram</li>
+        <li data-lang="ar">النقل الخاص داخل السعودية</li><li data-lang="fr">Transport privé</li>
+        <li data-lang="ar">تأشيرة + تأمين شامل</li><li data-lang="fr">Visa + Assurance complète</li>
+        <li data-lang="ar">مرشد خاص طوال الرحلة</li><li data-lang="fr">Guide privé tout au long</li>
+        <li data-lang="ar">خدمات حصرية VIP</li><li data-lang="fr">Services exclusifs VIP</li>
+      </ul>
+      <div class="pkg-cta">
+        <a href="#contact" data-lang="ar">احجز الآن</a>
+        <a href="#contact" data-lang="fr">Réserver</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section id="occasions">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">عمرة المناسبات</span>
+    <span class="section-eyebrow" data-lang="fr">Omra par occasion</span>
+    <h2 class="section-title" data-lang="ar">برامج خاصة في المواسم المباركة</h2>
+    <h2 class="section-title" data-lang="fr">Programmes spéciaux pour les saisons bénies</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="occasions-grid">
+    <a href="#contact" class="occ-card">
+      <span class="occ-icon">🌙</span>
+      <div class="occ-name" data-lang="ar">عمرة رجب</div>
+      <div class="occ-name" data-lang="fr">Omra Rajab</div>
+      <div class="occ-sub" data-lang="ar">شهر الإسراء والمعراج</div>
+      <div class="occ-sub" data-lang="fr">Mois du Voyage Nocturne</div>
+      <span class="occ-price" data-lang="ar">من 15,700 د.م</span>
+      <span class="occ-price" data-lang="fr">À partir de 15 700 MAD</span>
+    </a>
+    <a href="#contact" class="occ-card">
+      <span class="occ-icon">⭐</span>
+      <div class="occ-name" data-lang="ar">عمرة شعبان</div>
+      <div class="occ-name" data-lang="fr">Omra Chaabane</div>
+      <div class="occ-sub" data-lang="ar">تهيؤ روحي لرمضان</div>
+      <div class="occ-sub" data-lang="fr">Préparation spirituelle</div>
+      <span class="occ-price" data-lang="ar">من 15,700 د.م</span>
+      <span class="occ-price" data-lang="fr">À partir de 15 700 MAD</span>
+    </a>
+    <a href="#contact" class="occ-card">
+      <span class="occ-icon">🕌</span>
+      <div class="occ-name" data-lang="ar">عمرة رمضان</div>
+      <div class="occ-name" data-lang="fr">Omra Ramadan</div>
+      <div class="occ-sub" data-lang="ar">أجر حجة مع النبي ﷺ</div>
+      <div class="occ-sub" data-lang="fr">Équivaut au Hajj</div>
+      <span class="occ-price" data-lang="ar">من 15,700 د.م</span>
+      <span class="occ-price" data-lang="fr">À partir de 15 700 MAD</span>
+    </a>
+    <a href="#contact" class="occ-card">
+      <span class="occ-icon">🎆</span>
+      <div class="occ-name" data-lang="ar">عمرة شوال</div>
+      <div class="occ-name" data-lang="fr">Omra Chawal</div>
+      <div class="occ-sub" data-lang="ar">بعد رمضان المبارك</div>
+      <div class="occ-sub" data-lang="fr">Après le Ramadan béni</div>
+      <span class="occ-price" data-lang="ar">من 15,700 د.م</span>
+      <span class="occ-price" data-lang="fr">À partir de 15 700 MAD</span>
+    </a>
+    <a href="#contact" class="occ-card">
+      <span class="occ-icon">💫</span>
+      <div class="occ-name" data-lang="ar">عمرة المولد النبوي</div>
+      <div class="occ-name" data-lang="fr">Omra Mawlid</div>
+      <div class="occ-sub" data-lang="ar">إحياء ذكرى المولد الشريف</div>
+      <div class="occ-sub" data-lang="fr">Célébration du Prophète ﷺ</div>
+      <span class="occ-price" data-lang="ar">من 15,700 د.م</span>
+      <span class="occ-price" data-lang="fr">À partir de 15 700 MAD</span>
+    </a>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section id="included">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">ما يشمله البرنامج</span>
+    <span class="section-eyebrow" data-lang="fr">Ce qui est inclus</span>
+    <h2 class="section-title" data-lang="ar">شفافية تامة في كل التفاصيل</h2>
+    <h2 class="section-title" data-lang="fr">Transparence totale sur chaque détail</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="included-grid">
+    <div class="included-box">
+      <div class="included-box-header yes">
+        <span>✓</span>
+        <span data-lang="ar">مشمول في الباقة</span>
+        <span data-lang="fr">Inclus dans le forfait</span>
+      </div>
+      <ul class="included-list">
+        <li><span class="icon">✈️</span> <span data-lang="ar">تذاكر الطيران ذهابًا وإيابًا</span><span data-lang="fr">Billets d'avion aller-retour</span></li>
+        <li><span class="icon">🛂</span> <span data-lang="ar">تأشيرة العمرة</span><span data-lang="fr">Visa Omra</span></li>
+        <li><span class="icon">🛡️</span> <span data-lang="ar">التأمين على الرحلة</span><span data-lang="fr">Assurance voyage</span></li>
+        <li><span class="icon">🚌</span> <span data-lang="ar">النقل الداخلي في السعودية</span><span data-lang="fr">Transferts internes</span></li>
+        <li><span class="icon">🏨</span> <span data-lang="ar">الإقامة بمكة والمدينة</span><span data-lang="fr">Hébergement La Mecque & Médine</span></li>
+        <li><span class="icon">🕌</span> <span data-lang="ar">زيارة المدينة المنورة</span><span data-lang="fr">Visite de Médine</span></li>
+        <li><span class="icon">📖</span> <span data-lang="ar">الدروس الدينية مع مرشد</span><span data-lang="fr">Cours religieux avec guide</span></li>
+      </ul>
+    </div>
+
+    <div class="included-box">
+      <div class="included-box-header no">
+        <span>✗</span>
+        <span data-lang="ar">غير مشمول</span>
+        <span data-lang="fr">Non inclus</span>
+      </div>
+      <ul class="included-list">
+        <li><span class="icon">💸</span> <span data-lang="ar">المصاريف الشخصية</span><span data-lang="fr">Dépenses personnelles</span></li>
+        <li><span class="icon">🍽️</span> <span data-lang="ar">الوجبات غير المذكورة</span><span data-lang="fr">Repas non mentionnés</span></li>
+        <li><span class="icon">🚗</span> <span data-lang="ar">التنقلات الشخصية الإضافية</span><span data-lang="fr">Déplacements personnels</span></li>
+        <li><span class="icon">💉</span> <span data-lang="ar">تكاليف التطعيم</span><span data-lang="fr">Frais de vaccination</span></li>
+        <li><span class="icon">🧳</span> <span data-lang="ar">الأمتعة الزائدة عن الحد</span><span data-lang="fr">Excédents de bagages</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">البرنامج التفصيلي</span>
+    <span class="section-eyebrow" data-lang="fr">Programme détaillé</span>
+    <h2 class="section-title" data-lang="ar">رحلة 15 يومًا يومًا بيوم</h2>
+    <h2 class="section-title" data-lang="fr">15 jours — jour par jour</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="program-timeline">
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">يوم المغادرة</div>
+        <div class="prog-day" data-lang="fr">Jour de départ</div>
+        <div class="prog-title" data-lang="ar">المغادرة من مطار محمد الخامس</div>
+        <div class="prog-title" data-lang="fr">Départ de l'aéroport Mohammed V</div>
+        <div class="prog-desc" data-lang="ar">رحلة مباشرة إلى جدة أو المدينة المنورة. في حال الوصول إلى جدة، رحلة بالحافلة تستغرق حوالي 6 ساعات إلى المدينة. التسجيل بالفندق والراحة.</div>
+        <div class="prog-desc" data-lang="fr">Vol direct vers Djeddah ou Médine. En cas d'arrivée à Djeddah, trajet en bus (~6h) vers Médine. Installation à l'hôtel et repos.</div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">اليوم الأول</div>
+        <div class="prog-day" data-lang="fr">Jour 1</div>
+        <div class="prog-title" data-lang="ar">يوم حر في المدينة المنورة</div>
+        <div class="prog-title" data-lang="fr">Journée libre à Médine</div>
+        <div class="prog-desc" data-lang="ar">الصلاة في المسجد النبوي الشريف والإكثار من الدعاء. استكشاف المنطقة المحيطة والأسواق المحلية.</div>
+        <div class="prog-desc" data-lang="fr">Prières à Al-Masjid An-Nabawi, méditation et découverte des environs de la mosquée.</div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">اليوم الثاني</div>
+        <div class="prog-day" data-lang="fr">Jour 2</div>
+        <div class="prog-title" data-lang="ar">زيارة الروضة الشريفة</div>
+        <div class="prog-title" data-lang="fr">Visite d'Al-Rawdah Al-Sharifah</div>
+        <div class="prog-desc" data-lang="ar">فرصة فريدة للصلاة في أقدس مكان في المسجد النبوي، بين المنبر ومقام النبي ﷺ.</div>
+        <div class="prog-desc" data-lang="fr">Moment unique pour prier dans la zone la plus bénie de la Mosquée du Prophète ﷺ.</div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">اليوم الثالث</div>
+        <div class="prog-day" data-lang="fr">Jour 3</div>
+        <div class="prog-title" data-lang="ar">جولة المواقع التاريخية بالمدينة</div>
+        <div class="prog-title" data-lang="fr">Visite des sites historiques de Médine</div>
+        <div class="prog-desc" data-lang="ar">جبل أحد — مقبرة شهداء أحد — جبل الرماة — مسجد القبلتين — مسجد قباء (أول مسجد بناه النبي ﷺ).</div>
+        <div class="prog-desc" data-lang="fr">Mont Uhud — cimetière des martyrs — Montagne des Archers — Mosquée Qiblatain — Mosquée Quba.</div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">اليوم الرابع</div>
+        <div class="prog-day" data-lang="fr">Jour 4</div>
+        <div class="prog-title" data-lang="ar">الانطلاق إلى مكة المكرمة وأداء العمرة</div>
+        <div class="prog-title" data-lang="fr">Départ vers La Mecque et accomplissement de la Omra</div>
+        <div class="prog-desc" data-lang="ar">بعد صلاة الظهر، التوجه إلى مكة. التوقف بالميقات للدخول في الإحرام. الوصول والراحة ثم أداء مناسك العمرة ليلًا.</div>
+        <div class="prog-desc" data-lang="fr">Après Dhuhr, départ vers La Mecque. Arrêt au Miqat pour l'Ihram. Arrivée, repos puis accomplissement des rites de la Omra.</div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">اليوم 5 → 12</div>
+        <div class="prog-day" data-lang="fr">Jours 5 → 12</div>
+        <div class="prog-title" data-lang="ar">أيام روحانية حرة بمكة المكرمة</div>
+        <div class="prog-title" data-lang="fr">Jours libres spirituels à La Mecque</div>
+        <div class="prog-desc" data-lang="ar">وقت للصلاة والتأمل، زيارة المواقع التاريخية، التسوق، واستكشاف محيط الحرم المكي.</div>
+        <div class="prog-desc" data-lang="fr">Temps de prière, méditation, visites des sites historiques et découverte des environs du Haram.</div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div class="prog-dot"></div>
+      <div>
+        <div class="prog-day" data-lang="ar">اليوم الأخير</div>
+        <div class="prog-day" data-lang="fr">Dernier jour</div>
+        <div class="prog-title" data-lang="ar">المغادرة والعودة إلى المغرب</div>
+        <div class="prog-title" data-lang="fr">Départ et retour au Maroc</div>
+        <div class="prog-desc" data-lang="ar">لحظات أخيرة بمكة، ثم التوجه إلى مطار جدة للعودة المحمودة إلى المغرب.</div>
+        <div class="prog-desc" data-lang="fr">Derniers moments à La Mecque, puis transfert à l'aéroport de Djeddah pour le retour au Maroc.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">معرض الصور</span>
+    <span class="section-eyebrow" data-lang="fr">Galerie photos</span>
+    <h2 class="section-title" data-lang="ar">لحظات من رحلاتنا المباركة</h2>
+    <h2 class="section-title" data-lang="fr">Moments de nos voyages spirituels</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="gallery-grid" style="max-width:1100px;margin:0 auto;">
+    <div class="g-item tall">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/325370378_527970332730460_8032325128708821416_n.jpg" alt="حجاج السفر الذهبي">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/53340077_2456910934372913_1734935722638442496_n.jpg" alt="العمرة مع السفر الذهبي">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/70038366_2792562544141082_851873855122178048_n.jpg" alt="المسجد الحرام">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/359445183_666526928848349_7730851523102332540_n.jpg" alt="حجاج في مكة">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/359441445_666526892181686_1454567449472766569_n.jpg" alt="المدينة المنورة">
+    </div>
+    <div class="g-item tall">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/326016057_452629256941687_2180409592462647596_n.jpg" alt="مجموعة حجاج">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/54212975_2467763463287660_4440562229158346752_n-1.jpg" alt="استقبال الحجاج">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/70829863_2974783675918967_1616788301971193856_n.jpg" alt="رحلة العمرة">
+    </div>
+    <div class="g-item wide">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/77340866_2982320625165272_7630181728316817408_n-1.jpg" alt="مسجد قباء">
+    </div>
+    <div class="g-item">
+      <img src="https://www.voyageor.com/wp-content/uploads/2025/01/359441445_666526892181686_1454567449472766569_n-1.jpg" alt="المسجد النبوي">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">شهادات عملائنا</span>
+    <span class="section-eyebrow" data-lang="fr">Témoignages clients</span>
+    <h2 class="section-title" data-lang="ar">489+ تقييم على Google — 4.8 ★</h2>
+    <h2 class="section-title" data-lang="fr">489+ avis Google — 4.8 ★</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We had a wonderful Umrah experience with Voyage Or. The arrangements were smooth, the staff was helpful, and everything was well-organized. Highly recommend!"</p>
+      <div class="testi-author">Hasnaa Benrhanem</div>
+      <div class="testi-time" data-lang="ar">منذ 3 أسابيع</div>
+      <div class="testi-time" data-lang="fr">Il y a 3 semaines</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"My experience with this travel agency was absolutely outstanding. Everything was perfectly organized and I felt completely at ease throughout the entire journey."</p>
+      <div class="testi-author">Amine Ddehhani</div>
+      <div class="testi-time" data-lang="ar">منذ شهر</div>
+      <div class="testi-time" data-lang="fr">Il y a 1 mois</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Heartfelt thanks to the Golden Travel team for their valuable efforts. الحمد لله على هذه الرحلة المباركة."</p>
+      <div class="testi-author">ghizlane echchrifi</div>
+      <div class="testi-time" data-lang="ar">منذ 3 أشهر</div>
+      <div class="testi-time" data-lang="fr">Il y a 3 mois</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">أسئلة شائعة</span>
+    <span class="section-eyebrow" data-lang="fr">Questions fréquentes</span>
+    <h2 class="section-title" data-lang="ar">كل ما تريد معرفته</h2>
+    <h2 class="section-title" data-lang="fr">Tout ce que vous devez savoir</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-lang="ar">ما الوثائق المطلوبة لحجز العمرة؟</span>
+        <span data-lang="fr">Quels documents sont nécessaires pour réserver ?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">
+        <p data-lang="ar">جواز سفر ساري المفعول بصلاحية لا تقل عن 6 أشهر من تاريخ المغادرة، وصورتان حديثتان. نتولى نحن جميع الإجراءات الإدارية بما فيها طلب التأشيرة السعودية.</p>
+        <p data-lang="fr">Passeport valide (6 mois minimum), 2 photos récentes conformes aux normes. Notre équipe s'occupe de toutes les démarches administratives, y compris la demande de visa saoudien.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-lang="ar">هل يمكن للمرأة السفر وحدها للعمرة؟</span>
+        <span data-lang="fr">Une femme peut-elle voyager seule pour la Omra ?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">
+        <p data-lang="ar">النساء دون سن 45 سنة يحتجن إلى محرم. النساء فوق 45 سنة يمكنهن السفر مع المجموعة بتوكيل موقع. فريقنا يرشدك للمعلومات الحديثة المتعلقة بالأنظمة السعودية.</p>
+        <p data-lang="fr">Les femmes de moins de 45 ans doivent être accompagnées d'un mahram. Celles de plus de 45 ans peuvent voyager en groupe avec une autorisation signée. Notre équipe vous informera des directives actuelles.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-lang="ar">ما نوع الفنادق المشمولة في الباقة؟</span>
+        <span data-lang="fr">Quels hébergements sont inclus dans les forfaits ?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">
+        <p data-lang="ar">نختار فنادق 3 إلى 5 نجوم قريبة من الحرم المكي والمسجد النبوي، مجهزة بجميع وسائل الراحة. وفق الباقة المختارة تتفاوت درجة الفندق.</p>
+        <p data-lang="fr">Hôtels 3 à 5 étoiles situés à proximité du Haram et d'Al-Masjid An-Nabawi, équipés de tout le confort moderne. La catégorie varie selon le forfait choisi.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-lang="ar">هل يمكن أداء العمرة مع العائلة؟</span>
+        <span data-lang="fr">Peut-on accomplir la Omra en famille ?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">
+        <p data-lang="ar">نعم! نوفر غرفًا عائلية ومتصلة. هناك تخفيضات للمجموعات والعائلات الكبيرة، ومساعدة شخصية لتلبية احتياجات الأطفال.</p>
+        <p data-lang="fr">Oui ! Nous proposons des chambres familiales ou communicantes. Des réductions sont disponibles pour les groupes, avec une assistance personnalisée pour les besoins des enfants.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-lang="ar">ما سياسة الإلغاء؟</span>
+        <span data-lang="fr">Quelle est la politique d'annulation ?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">
+        <p data-lang="ar">سياستنا مرنة تختلف حسب تاريخ الإلغاء. يمكن استرداد المبلغ جزئيًا أو كليًا حسب المدة المتبقية، أو تأجيل الرحلة لتاريخ آخر وفق شروط معينة.</p>
+        <p data-lang="fr">Notre politique est flexible et varie selon la date d'annulation. Remboursement partiel ou total selon les délais, ou report du voyage à une date ultérieure selon certaines conditions.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-lang="ar">كيف أضمن حجزي؟</span>
+        <span data-lang="fr">Comment garantir ma réservation ?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">
+        <p data-lang="ar">يُنصح بالحجز مبكرًا نظرًا لمحدودية الأماكن (35 شخص لكل رحلة). يُدفع مبلغ مقدم لتأكيد الحجز، وفريقنا يرشدك لاستكمال كل الخطوات.</p>
+        <p data-lang="fr">Il est conseillé de réserver tôt, les places étant limitées (35 personnes par voyage). Un acompte est requis pour confirmer, et notre équipe vous guide pour finaliser toutes les étapes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section id="branches">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">فروعنا</span>
+    <span class="section-eyebrow" data-lang="fr">Nos agences</span>
+    <h2 class="section-title" data-lang="ar">نحن قريبون منك في كل المغرب</h2>
+    <h2 class="section-title" data-lang="fr">Présents partout au Maroc</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="branches-grid">
+    <div class="branch-card">
+      <div class="branch-city" data-lang="ar">سلا الجديدة</div>
+      <div class="branch-city" data-lang="fr">Sala Al Jadida</div>
+      <div class="branch-info">
+        <div data-lang="ar">شارع الحسن الثاني، مجمع 30-26</div>
+        <div data-lang="fr">Avenue Hassan II, ensemble 30-26</div>
+        <div>📞 05 37 85 74 75</div>
+        <div>📧 contact@voyageor.com</div>
+      </div>
+      <div class="branch-hours">
+        <div class="branch-hours-title" data-lang="ar">أوقات العمل</div>
+        <div class="branch-hours-title" data-lang="fr">Horaires</div>
+        <div class="hours-row"><span data-lang="ar">الإثنين — الثلاثاء</span><span data-lang="fr">Lun — Mar</span> <span>9:00 - 13:00 / 15:00 - 19:00</span></div>
+        <div class="hours-row"><span data-lang="ar">السبت</span><span data-lang="fr">Samedi</span> <span>9:00 - 13:00</span></div>
+        <div class="hours-row"><span data-lang="ar">الأحد</span><span data-lang="fr">Dimanche</span> <span style="color:#E24B4A" data-lang="ar">مغلق</span><span style="color:#E24B4A" data-lang="fr">Fermé</span></div>
+      </div>
+    </div>
+
+    <div class="branch-card">
+      <div class="branch-city" data-lang="ar">الدار البيضاء</div>
+      <div class="branch-city" data-lang="fr">Casablanca</div>
+      <div class="branch-info">
+        <div data-lang="ar">الدار البيضاء، المغرب</div>
+        <div data-lang="fr">Casablanca, Maroc</div>
+        <div>📞 05 37 85 74 75</div>
+        <a href="https://maps.app.goo.gl/vsUMf6xA4o53DV9NA" target="_blank" style="color:var(--gold);font-size:13px;" data-lang="ar">📍 عرض على الخريطة</a>
+        <a href="https://maps.app.goo.gl/vsUMf6xA4o53DV9NA" target="_blank" style="color:var(--gold);font-size:13px;" data-lang="fr">📍 Voir sur la carte</a>
+      </div>
+      <div class="branch-hours">
+        <div class="branch-hours-title" data-lang="ar">أوقات العمل</div>
+        <div class="branch-hours-title" data-lang="fr">Horaires</div>
+        <div class="hours-row"><span data-lang="ar">الإثنين — الثلاثاء</span><span data-lang="fr">Lun — Mar</span> <span>9:00 - 13:00 / 15:00 - 19:00</span></div>
+        <div class="hours-row"><span data-lang="ar">السبت</span><span data-lang="fr">Samedi</span> <span>9:00 - 13:00</span></div>
+        <div class="hours-row"><span data-lang="ar">الأحد</span><span data-lang="fr">Dimanche</span> <span style="color:#E24B4A" data-lang="ar">مغلق</span><span style="color:#E24B4A" data-lang="fr">Fermé</span></div>
+      </div>
+    </div>
+
+    <div class="branch-card">
+      <div class="branch-city" data-lang="ar">القنيطرة</div>
+      <div class="branch-city" data-lang="fr">Kénitra</div>
+      <div class="branch-info">
+        <div data-lang="ar">القنيطرة، المغرب</div>
+        <div data-lang="fr">Kénitra, Maroc</div>
+        <div>📞 05 37 85 74 75</div>
+        <a href="https://maps.app.goo.gl/MFEJxMbDAZHjQdWu7" target="_blank" style="color:var(--gold);font-size:13px;" data-lang="ar">📍 عرض على الخريطة</a>
+        <a href="https://maps.app.goo.gl/MFEJxMbDAZHjQdWu7" target="_blank" style="color:var(--gold);font-size:13px;" data-lang="fr">📍 Voir sur la carte</a>
+      </div>
+      <div class="branch-hours">
+        <div class="branch-hours-title" data-lang="ar">أوقات العمل</div>
+        <div class="branch-hours-title" data-lang="fr">Horaires</div>
+        <div class="hours-row"><span data-lang="ar">الإثنين — الثلاثاء</span><span data-lang="fr">Lun — Mar</span> <span>9:00 - 13:00 / 15:00 - 19:00</span></div>
+        <div class="hours-row"><span data-lang="ar">السبت</span><span data-lang="fr">Samedi</span> <span>9:00 - 13:00</span></div>
+        <div class="hours-row"><span data-lang="ar">الأحد</span><span data-lang="fr">Dimanche</span> <span style="color:#E24B4A" data-lang="ar">مغلق</span><span style="color:#E24B4A" data-lang="fr">Fermé</span></div>
+      </div>
+    </div>
+
+    <div class="branch-card">
+      <div class="branch-city" data-lang="ar">أكادير</div>
+      <div class="branch-city" data-lang="fr">Agadir</div>
+      <div class="branch-info">
+        <div data-lang="ar">أكادير، المغرب</div>
+        <div data-lang="fr">Agadir, Maroc</div>
+        <div>📞 05 37 85 74 75</div>
+        <div>📧 contact@voyageor.com</div>
+      </div>
+      <div class="branch-hours">
+        <div class="branch-hours-title" data-lang="ar">أوقات العمل</div>
+        <div class="branch-hours-title" data-lang="fr">Horaires</div>
+        <div class="hours-row"><span data-lang="ar">الإثنين — الثلاثاء</span><span data-lang="fr">Lun — Mar</span> <span>9:00 - 13:00 / 15:00 - 19:00</span></div>
+        <div class="hours-row"><span data-lang="ar">السبت</span><span data-lang="fr">Samedi</span> <span>9:00 - 13:00</span></div>
+        <div class="hours-row"><span data-lang="ar">الأحد</span><span data-lang="fr">Dimanche</span> <span style="color:#E24B4A" data-lang="ar">مغلق</span><span style="color:#E24B4A" data-lang="fr">Fermé</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-eyebrow" data-lang="ar">تواصل معنا</span>
+    <span class="section-eyebrow" data-lang="fr">Contactez-nous</span>
+    <h2 class="section-title" data-lang="ar">احجز رحلتك الروحية اليوم</h2>
+    <h2 class="section-title" data-lang="fr">Réservez votre voyage spirituel aujourd'hui</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h3 data-lang="ar">معلومات التواصل</h3>
+      <h3 data-lang="fr">Informations de contact</h3>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div>
+          <div class="contact-item-label" data-lang="ar">هاتف</div>
+          <div class="contact-item-label" data-lang="fr">Téléphone</div>
+          <div class="contact-item-text">05 37 85 74 75</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-text">contact@voyageor.com</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <div class="contact-item-label" data-lang="ar">المقر الرئيسي</div>
+          <div class="contact-item-label" data-lang="fr">Siège principal</div>
+          <div class="contact-item-text" data-lang="ar">شارع الحسن الثاني، سلا الجديدة 11100</div>
+          <div class="contact-item-text" data-lang="fr">Avenue Hassan II, Sala Al Jadida 11100</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px;">
+        <a href="https://wa.me/212665060839" class="wa-btn" target="_blank">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.118.553 4.107 1.523 5.837L.057 23.859l6.174-1.437C7.873 23.412 9.903 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.898 0-3.668-.523-5.176-1.43l-.371-.22-3.862.9.963-3.727-.24-.381C2.534 15.566 2 13.844 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span data-lang="ar">تواصل عبر واتساب</span>
+          <span data-lang="fr">Contacter via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <input type="text" placeholder="الاسم الكامل / Nom complet">
+        <input type="tel" placeholder="الهاتف / Téléphone">
+      </div>
+      <input type="email" placeholder="البريد الإلكتروني / Email">
+      <select>
+        <option value="" data-lang="ar">اختر المدينة / Choisir une agence</option>
+        <option data-lang="ar">سلا الجديدة</option>
+        <option data-lang="ar">الدار البيضاء</option>
+        <option data-lang="ar">القنيطرة</option>
+        <option data-lang="ar">أكادير</option>
+      </select>
+      <select>
+        <option value="">اختر الباقة / Choisir un forfait</option>
+        <option data-lang="ar">واسطة — من 15,700 درهم</option>
+        <option data-lang="ar">ذهب — من 15,700 درهم</option>
+        <option data-lang="ar">ممتاز — من 35,000 درهم</option>
+        <option data-lang="fr">Medium — à partir de 15 700 MAD</option>
+        <option data-lang="fr">Gold — à partir de 15 700 MAD</option>
+        <option data-lang="fr">Excellent — à partir de 35 000 MAD</option>
+      </select>
+      <textarea placeholder="رسالتك / Votre message (اختياري / optionnel)"></textarea>
+      <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;" onclick="submitForm()">
+        <span data-lang="ar">إرسال الطلب</span>
+        <span data-lang="fr">Envoyer la demande</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="nav-logo-icon"></div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">السفر الذهبي</div>
+          <div style="font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:2px;">VOYAGE OR</div>
+        </div>
+      </div>
+      <p data-lang="ar">وكالتك الموثوقة لأداء فريضة العمرة من المغرب. تنظيم سلس، أسعار تنافسية، ومرافقة روحية متكاملة.</p>
+      <p data-lang="fr">Votre agence de confiance pour accomplir la Omra depuis le Maroc. Organisation fluide, prix compétitifs et accompagnement spirituel complet.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4 data-lang="ar">العمرة الشهرية</h4>
+      <h4 data-lang="fr">Omra mensuelle</h4>
+      <a href="#packages" data-lang="ar">يناير 2026</a>
+      <a href="#packages" data-lang="fr">Janvier 2026</a>
+      <a href="#packages" data-lang="ar">فبراير 2026</a>
+      <a href="#packages" data-lang="fr">Février 2026</a>
+      <a href="#packages" data-lang="ar">مارس 2026</a>
+      <a href="#packages" data-lang="fr">Mars 2026</a>
+      <a href="#packages" data-lang="ar">أبريل 2026</a>
+      <a href="#packages" data-lang="fr">Avril 2026</a>
+    </div>
+
+    <div class="footer-col">
+      <h4 data-lang="ar">المناسبات</h4>
+      <h4 data-lang="fr">Occasions</h4>
+      <a href="#occasions" data-lang="ar">عمرة رجب</a>
+      <a href="#occasions" data-lang="fr">Omra Rajab</a>
+      <a href="#occasions" data-lang="ar">عمرة رمضان</a>
+      <a href="#occasions" data-lang="fr">Omra Ramadan</a>
+      <a href="#occasions" data-lang="ar">عمرة المولد</a>
+      <a href="#occasions" data-lang="fr">Omra Mawlid</a>
+      <a href="#occasions" data-lang="ar">عمرة شوال</a>
+      <a href="#occasions" data-lang="fr">Omra Chawal</a>
+    </div>
+
+    <div class="footer-col">
+      <h4 data-lang="ar">تواصل معنا</h4>
+      <h4 data-lang="fr">Contact</h4>
+      <a href="tel:+212537857475">📞 05 37 85 74 75</a>
+      <a href="mailto:contact@voyageor.com">✉️ contact@voyageor.com</a>
+      <a href="https://wa.me/212665060839" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.facebook.com/VoyageOr/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/voyage.or" target="_blank">Instagram</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 السفر الذهبي / VoyageOr — <span data-lang="ar">جميع الحقوق محفوظة</span><span data-lang="fr">Tous droits réservés</span></p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/VoyageOr/" class="social-link" target="_blank">f</a>
+      <a href="https://www.instagram.com/voyage.or" class="social-link" target="_blank">in</a>
+      <a href="https://wa.me/212665060839" class="social-link" target="_blank">w</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/212665060839" class="wa-float" target="_blank" title="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.118.553 4.107 1.523 5.837L.057 23.859l6.174-1.437C7.873 23.412 9.903 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.898 0-3.668-.523-5.176-1.43l-.371-.22-3.862.9.963-3.727-.24-.381C2.534 15.566 2 13.844 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+function setLang(lang) {
+  document.body.className = lang === 'fr' ? 'fr' : '';
+  document.documentElement.lang = lang === 'fr' ? 'fr' : 'ar';
+  document.documentElement.dir = lang === 'fr' ? 'ltr' : 'rtl';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  item.classList.toggle('open');
+}
+
+function submitForm() {
+  alert(document.body.classList.contains('fr')
+    ? 'Merci ! Nous vous contacterons bientôt. بارك الله فيكم'
+    : 'شكرًا! سنتواصل معك قريبًا إن شاء الله 🤲');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
 </body>
 </html>
