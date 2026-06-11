@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crispy Food - طلبات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6 text-center">Crispy Food Menu</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow flex gap-4">
+                    <img src="https://via.placeholder.com/100x100?text=Tacos" class="w-20 h-20 rounded object-cover" alt="Tacos">
+                    <div>
+                        <h3 class="font-bold">Tacos Crispy</h3>
+                        <p class="text-blue-600 font-bold">42 درهم</p>
+                        <button onclick="addToCart('Tacos Crispy', 42)" class="bg-blue-600 text-white px-3 py-1 rounded mt-2 text-sm">إضافة</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow flex gap-4">
+                    <img src="https://via.placeholder.com/100x100?text=Box" class="w-20 h-20 rounded object-cover" alt="Box">
+                    <div>
+                        <h3 class="font-bold">Crispy Box</h3>
+                        <p class="text-blue-600 font-bold">47 درهم</p>
+                        <button onclick="addToCart('Crispy Box', 47)" class="bg-blue-600 text-white px-3 py-1 rounded mt-2 text-sm">إضافة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow h-fit">
+                <h2 class="font-bold text-lg mb-4">سلة الطلبات</h2>
+                <div id="cart-list" class="space-y-2 mb-4"></div>
+                <hr>
+                <p class="text-xl font-bold mt-4">المجموع: <span id="total">0</span> درهم</p>
+                <button onclick="checkout()" class="w-full bg-green-600 text-white py-3 rounded-lg mt-4 font-bold">إرسال الطلب عبر واتساب</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            renderCart();
+        }
+
+        function renderCart() {
+            const list = document.getElementById('cart-list');
+            list.innerHTML = cart.map(item => `<p>${item.name} - ${item.price} DH</p>`).join('');
+            document.getElementById('total').innerText = total;
+        }
+
+        function checkout() {
+            let msg = "الطلب: " + cart.map(i => i.name).join(", ") + ". المجموع: " + total + " DH";
+            window.open("https://wa.me/212634555612?text=" + encodeURIComponent(msg));
+        }
+    </script>
+</body>
+</html>
